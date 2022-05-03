@@ -18,7 +18,7 @@ RUN pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu110/torc
 
 RUN pip install mmdet==2.20.0
 
-RUN git clone https://github.com/open-mmlab/mmocr.git /mmocr
+RUN git clone https://github.com/phamvanhanh6720/mmocr.git /mmocr
 WORKDIR /mmocr
 ENV FORCE_CUDA="1"
 RUN pip install -r requirements.txt
