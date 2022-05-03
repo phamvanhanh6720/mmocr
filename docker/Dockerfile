@@ -12,6 +12,8 @@ ENV CMAKE_PREFIX_PATH="$(dirname $(which conda))/../"
 #    && apt-get clean \
 #    && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get install -y wget
+
 RUN apt-key del 7fa2af80
 RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-keyring_1.0-1_all.deb
 RUN dpkg -i cuda-keyring_1.0-1_all.deb
