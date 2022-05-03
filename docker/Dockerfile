@@ -9,23 +9,17 @@ ENV TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
 ENV CMAKE_PREFIX_PATH="$(dirname $(which conda))/../"
 
 RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
 
 RUN apt-get update && apt-get install -y git ninja-build libglib2.0-0 libsm6 libxrender-dev libxext6 libgl1-mesa-glx \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# RUN apt-get install -y wget
-
-# RUN apt-key del 7fa2af80
-# RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-keyring_1.0-1_all.deb
-# RUN dpkg -i cuda-keyring_1.0-1_all.deb
-
-# RUN apt-get update && apt-get install -y git
 
 RUN conda clean --all
 RUN pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu110/torch1.7.0/index.html
 
-RUN pip install mmdet==2.20.0
+RUN pip install mmdet==2.23.0
 
 RUN git clone https://github.com/phamvanhanh6720/mmocr.git /mmocr
 WORKDIR /mmocr
