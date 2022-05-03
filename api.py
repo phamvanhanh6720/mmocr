@@ -38,4 +38,4 @@ async def recognize_text(img_input: ImageInput):
     image = cv2.imdecode(np.fromstring(img_object, np.uint8), cv2.IMREAD_COLOR)
     results = ocr.readtext(image, merge=True)
 
-    return results
+    return {"result": results}
